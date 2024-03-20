@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app" class="calculator">
+    <h2>Calculator Vue.js</h2>
+    <input type="number" id="num1"  v-model="text"  placeholder="Enter first number">
+    <input type="number" id="num2"  v-model="text2" placeholder="Enter second number">
+    <div class="btn-container">
+        <button class="btn" v-on:click="add">+</button>
+        <button class="btn" v-on:click="minus">-</button>
+        <button class="btn" v-on:click="inc">*</button>
+        <button class="btn" v-on:click="bol">/</button>
+    </div>
+    <input type="text" id="result"  v-model="javob" placeholder="Result" readonly >
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const { createApp, ref } = Vue
+    
+    createApp({
+        setup() {
+            const text = ref();
+            const text2 = ref();
+            const javob = ref();
+            function add(){
+                javob.value = text.value + text2.value;
+                
+            }
+            function minus(){
+                javob.value = text.value - text2.value;
+                
+            }
+            function inc(){
+                javob.value = text.value * text2.value;
+                
+            }
+            function bol(){
+                javob.value = text.value / text2.value;
+                
+            }
+            return {
+                add,
+                minus,
+                inc,
+                bol,
+                text,
+                text2,
+                javob
+
+            }
+        }
+    }).mount('#app')
+</script>
+
+</body>
+</html>
